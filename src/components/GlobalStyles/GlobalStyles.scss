@@ -13,10 +13,11 @@
     --primary: #fe2c55;
     --black: #000;
     --white: #fff;
+    --text-colo: #333;
     // Default Layout
     --default-layout-header-height: 60px;
     --default-layout-width: 1150px;
-    --text-colo: #333;
+    --default-layout-horizol-spacer: 24px;
 }
 
 * {
@@ -47,4 +48,26 @@ input,
 a {
     color: var(--text-color);
     text-decoration: none;
+}
+
+// custom typpi toolstip
+body {
+    .tippy-box {
+        border: 8px;
+        font-size: 1.6rem;
+        line-height: 2.2rem;
+        background-color: rgba(84, 84, 84, 0.92);
+    }
+
+    .tippy-arrow {
+        color: rgba(84, 84, 84, 0.92);
+    }
+
+    .tippy-box[data-placement^='bottom'] > .tippy-arrow::before {
+        top: -7px;
+    }
+
+    .tippy-content {
+        padding: 8px 9px;
+    }
 }

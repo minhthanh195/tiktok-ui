@@ -17,6 +17,7 @@
     justify-content: space-between;
     width: var(--default-layout-width);
     height: 100%;
+    padding: 0 var(--default-layout-horizol-spacer);
 }
 .search,
 .search_result {
@@ -98,10 +99,34 @@
     color: rgba(22, 24, 35, 0.5);
 }
 
+// actions
+
+.actions {
+    display: flex;
+    align-items: center;
+}
+
 .more_btn {
     margin-left: 28px;
     padding: 4px 8px;
     font-size: 2rem;
     background-color: transparent;
+    cursor: pointer;
+}
+
+.action_btn {
+    font-size: 1.6em;
+    background-color: transparent;
+    color: #161823;
+    padding: 4px 12px;
+    cursor: pointer;
+}
+
+// avatar
+.user_avatar {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 50%;
     cursor: pointer;
 }
