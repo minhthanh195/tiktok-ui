@@ -91,9 +91,17 @@
     }
 }
 
-.search-title {
+.search_title {
     padding: 5px 12px;
     font-size: 1.4rem;
     font-weight: 600;
     color: rgba(22, 24, 35, 0.5);
+}
+
+.more_btn {
+    margin-left: 28px;
+    padding: 4px 8px;
+    font-size: 2rem;
+    background-color: transparent;
+    cursor: pointer;
 }
