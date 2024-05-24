@@ -9,11 +9,9 @@ function Button({
     href,
     primary = false,
     outline = false,
-    small = false,
-    large = false,
     text = false,
     disabled = false,
-    rounded = false,
+    outlineGray = false,
     className,
     leftIcon,
     rightIcon,
@@ -48,11 +46,9 @@ function Button({
         [className]: className,
         primary,
         outline,
-        small,
-        large,
         text,
         disabled,
-        rounded,
+        outlineGray,
     });
 
     return (

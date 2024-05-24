@@ -9,23 +9,23 @@ import {
     faCircleQuestion,
     faKeyboard,
     faEarthAsia,
-    faCloudUpload,
     faUser,
     faCoins,
     faGear,
     faSignOut,
-    faCommentDots,
 } from '@fortawesome/free-solid-svg-icons';
 import TippyHeadless from '@tippyjs/react/headless';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
+import Image from '~/components/Image';
 
 import { Wrapper as PopperWrapper } from '~/components/Poper';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
 import Menu from '~/components/Poper/Menu';
+import { AddIcon, MailIcon, MessengerIcon } from '~/components/Icons';
 
 const cx = classNames.bind(styles);
 
@@ -145,21 +145,27 @@ function Header() {
                 <div className={cx('actions')}>
                     {currentUser ? (
                         <>
-                            <Tippy content="Upload video" placement="bottom">
+                            <Button outline outlineGray leftIcon={<AddIcon />}>
+                                Tải Lên
+                            </Button>
+
+                            <Tippy content="Tin Nhắn">
                                 <button className={cx('action_btn')}>
-                                    <FontAwesomeIcon icon={faCloudUpload} />
+                                    <MessengerIcon />
                                 </button>
                             </Tippy>
 
-                            <Tippy content="Hello Word">
+                            <Tippy content="Hộp Thư">
                                 <button className={cx('action_btn')}>
-                                    <FontAwesomeIcon icon={faCommentDots} />
+                                    <MailIcon />
                                 </button>
                             </Tippy>
                         </>
                     ) : (
                         <>
-                            <Button text>Upload</Button>
+                            <Button outline outlineGray>
+                                Tải lên
+                            </Button>
                             {/*
                     Nếu muốn custom một kiểu đặc biệt mới thì sử dụng 
                     classname rồi truyền cx(tên class muốn đặt vào )rồi sau đó css cho class vd truyền cho button
@@ -171,7 +177,12 @@ function Header() {
 
                     <Menu items={currentUser ? user_menu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <img src="https://picsum.photos/400/400" className={cx('user_avatar')} alt="Nguyen Van A" />
+                            <Image
+                                className={cx('user_avatar')}
+                                src="https://picsum.photos/400/400aaaaa"
+                                alt="Nguyen Van A"
+                                fallBack={images.duckImage}
+                            />
                         ) : (
                             <button className={cx('more_btn')}>
                                 <FontAwesomeIcon icon={faEllipsisVertical} />

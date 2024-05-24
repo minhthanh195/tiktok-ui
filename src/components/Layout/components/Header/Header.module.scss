@@ -21,7 +21,7 @@
 }
 .search,
 .search_result {
-    width: 361px;
+    width: 516px;
 }
 
 .search {
@@ -100,7 +100,6 @@
 }
 
 // actions
-
 .actions {
     display: flex;
     align-items: center;
@@ -115,6 +114,9 @@
 }
 
 .action_btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     font-size: 1.6em;
     background-color: transparent;
     color: #161823;
