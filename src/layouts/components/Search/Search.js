@@ -15,10 +15,10 @@ const cx = classNames.bind(styles);
 function Search() {
     const [searchValue, setSearchValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
-    const [showResult, setShowResult] = useState(true);
+    const [showResult, setShowResult] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    const debounced = useDebounce(searchValue, 500);
+    const debouncedValue = useDebounce(searchValue, 500);
 
     const inputRef = useRef();
 
@@ -40,19 +40,19 @@ function Search() {
     };
 
     useEffect(() => {
-        if (!debounced.trim()) {
+        if (!debouncedValue.trim()) {
             setSearchResult([]);
             return;
         }
         const fetchApi = async () => {
             setLoading(true);
-            const result = await searchServices.search(debounced);
+            const result = await searchServices.search(debouncedValue);
             setSearchResult(result);
             setLoading(false);
         };
         fetchApi();
         // dùng encodeURIComponent để encode giá trị searchValue khi truyền vào nhằm kh bị dính các ký tự & hay ? ... gây ra lỗi tại vì đang sử dụng nối chuổi
-    }, [debounced]);
+    }, [debouncedValue]);
 
     return (
         // Using a wrapper <div> or <span> tag around the reference element solves this by creating a new parent Node context.

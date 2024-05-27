@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     min-width: 100px;
-    padding: 7px 15px;
+    padding: 10px 8px;
     border-radius: 4px;
     font-size: 1.6rem;
     font-weight: 700;
@@ -14,7 +14,7 @@
     user-select: none;
 
     & + .wrapper {
-        margin-left: 4px;
+        margin-left: 16px;
     }
 
     // disaled
