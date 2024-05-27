@@ -16,7 +16,7 @@ import Button from '~/components/Button';
 import Image from '~/components/Image';
 import { Link } from 'react-router-dom';
 
-import routesConfig from '~/config/routes';
+import config from '~/config';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
 import Menu from '~/components/Poper/Menu';
@@ -100,7 +100,7 @@ function Header() {
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
-                    <Link to={routesConfig.home}>
+                    <Link to={config.routes.home}>
                         <img src={images.logo} alt="Tiktok"></img>
                     </Link>
                 </div>
