@@ -14,13 +14,14 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import Button from '~/components/Button';
 import Image from '~/components/Image';
+import { Link } from 'react-router-dom';
 
+import routesConfig from '~/config/routes';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
 import Menu from '~/components/Poper/Menu';
 import { AddIcon, MailIcon, MessengerIcon } from '~/components/Icons';
 import Search from '../../Search';
-
 const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [
@@ -99,7 +100,9 @@ function Header() {
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
-                    <img src={images.logo} alt="Tiktok"></img>
+                    <Link to={routesConfig.home}>
+                        <img src={images.logo} alt="Tiktok"></img>
+                    </Link>
                 </div>
 
                 <Search />

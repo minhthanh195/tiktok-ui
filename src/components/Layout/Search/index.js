@@ -22,9 +22,16 @@ function Search() {
 
     const inputRef = useRef();
 
-    function handleClickOutSide() {
+    const handleClickOutSide = () => {
         setShowResult(false);
-    }
+    };
+
+    const handleChange = (e) => {
+        const searchValue = e.target.value;
+        if (!searchValue.startsWith(' ')) {
+            setSearchValue(searchValue);
+        }
+    };
 
     const handleClear = () => {
         setSearchValue('');
@@ -69,9 +76,7 @@ function Search() {
                     value={searchValue}
                     placeholder="Search accounts and videos"
                     spellCheck={false}
-                    onChange={(e) => {
-                        setSearchValue(e.target.value);
-                    }}
+                    onChange={handleChange}
                     onFocus={() => setShowResult(true)}
                 ></input>
                 {!!searchValue && !loading && (
@@ -85,7 +90,12 @@ function Search() {
                     </button>
                 )}
                 {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
-                <button className={cx('search_btn')}>
+                <button
+                    className={cx('search_btn')}
+                    onMouseDown={(e) => {
+                        e.preventDefault();
+                    }}
+                >
                     <SearchIcon />
                 </button>
             </div>

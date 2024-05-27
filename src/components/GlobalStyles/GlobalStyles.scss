@@ -9,6 +9,8 @@
     --default-layout-header-height: 60px;
     --default-layout-width: 100%;
     --default-layout-horizol-spacer: 24px;
+    // fonts
+    --font-family: 'Proxima', sans-serif;
 }
 
 * {
@@ -22,7 +24,7 @@ html {
 }
 
 body {
-    font-family: 'Proxima';
+    font-family: var(--font-family);
     font-size: 1.6rem;
     line-height: 1.5;
     text-rendering: optimizeSpeed;
