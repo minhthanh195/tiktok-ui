@@ -9,9 +9,9 @@ import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 
-const defautFn = () => {};
+const defaultFn = () => {};
 
-function Menu({ children, hideOnClick = false, items = [], onChange = defautFn }) {
+function Menu({ children, hideOnClick = false, items = [], onChange = defaultFn }) {
     const [history, setHistory] = useState([{ data: items }]);
     const current = history[history.length - 1];
 

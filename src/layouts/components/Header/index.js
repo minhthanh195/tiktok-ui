@@ -139,7 +139,6 @@ function Header() {
                             <Button primary>Login</Button>
                         </>
                     )}
-
                     <Menu items={currentUser ? user_menu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
                             <Image
