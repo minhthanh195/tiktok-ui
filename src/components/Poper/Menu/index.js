@@ -53,13 +53,11 @@ function Menu({ children, hideOnClick = false, items = [], onChange = defautFn }
                                 }}
                             ></Header>
                         )}
-                        {renderItems()}
+                        <div className={cx('menu_body')}>{renderItems()}</div>
                     </PopperWrapper>
                 </div>
             )}
-            onHide={() => {
-                setHistory((prev) => prev.slice(0, 1));
-            }}
+            onHide={() => setHistory((prev) => prev.slice(0, 1))}
         >
             {children}
         </Tippy>

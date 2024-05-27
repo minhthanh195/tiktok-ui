@@ -22,8 +22,12 @@
     padding-bottom: 8px;
 }
 
+.menu_body {
+    overflow-y: auto;
+}
 // header
 .header {
+    flex-shrink: 0;
     position: relative;
     height: 50px;
     margin-top: -8px;
