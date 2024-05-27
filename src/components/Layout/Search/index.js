@@ -7,15 +7,18 @@ import AccountItem from '~/components/AccountItem';
 import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
 import { SearchIcon } from '~/components/Icons';
-
+import useDebounce from '~/hooks/useDebounce';
+import * as searchServices from '~/apiServices/searchServices';
 import { Wrapper as PopperWrapper } from '~/components/Poper';
 
 const cx = classNames.bind(styles);
-
 function Search() {
     const [searchValue, setSearchValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
     const [showResult, setShowResult] = useState(true);
+    const [loading, setLoading] = useState(false);
+
+    const debounced = useDebounce(searchValue, 500);
 
     const inputRef = useRef();
 
@@ -30,10 +33,19 @@ function Search() {
     };
 
     useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([1, 2]);
-        }, 0);
-    }, []);
+        if (!debounced.trim()) {
+            setSearchResult([]);
+            return;
+        }
+        const fetchApi = async () => {
+            setLoading(true);
+            const result = await searchServices.search(debounced);
+            setSearchResult(result);
+            setLoading(false);
+        };
+        fetchApi();
+        // dùng encodeURIComponent để encode giá trị searchValue khi truyền vào nhằm kh bị dính các ký tự & hay ? ... gây ra lỗi tại vì đang sử dụng nối chuổi
+    }, [debounced]);
 
     return (
         <TippyHeadless
@@ -43,10 +55,9 @@ function Search() {
                 <div className={cx('search_result')} tabIndex={-1} {...attrs}>
                     <PopperWrapper>
                         <h4 className={cx('search_title')}>Accounts</h4>
-                        <AccountItem />
-                        <AccountItem />
-                        <AccountItem />
-                        <AccountItem />
+                        {searchResult.map((result) => (
+                            <AccountItem key={result.id} data={result} />
+                        ))}
                     </PopperWrapper>
                 </div>
             )}
@@ -63,7 +74,7 @@ function Search() {
                     }}
                     onFocus={() => setShowResult(true)}
                 ></input>
-                {!!searchValue && (
+                {!!searchValue && !loading && (
                     <button
                         className={cx('clear')}
                         onClick={(e) => {
@@ -73,8 +84,7 @@ function Search() {
                         <FontAwesomeIcon icon={faCircleXmark} />
                     </button>
                 )}
-
-                {/* <FontAwesomeIcon className={cx('loading')} icon={faSpinner} /> */}
+                {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
                 <button className={cx('search_btn')}>
                     <SearchIcon />
                 </button>

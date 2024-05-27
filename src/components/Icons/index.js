@@ -17,7 +17,7 @@ export const MessengerIcon = ({ className, width = '2.6rem', height = '2.6rem' }
 
 export const MailIcon = ({ className, width = '3.2rem', height = '3.2rem' }) => (
     <svg
-        class={className}
+        className={className}
         width={width}
         height={height}
         viewBox="0 0 32 32"
@@ -34,7 +34,7 @@ export const MailIcon = ({ className, width = '3.2rem', height = '3.2rem' }) => 
 
 export const AddIcon = ({ className, width = '2rem', height = '2rem' }) => (
     <svg
-        class={className}
+        className={className}
         width={width}
         height={height}
         viewBox="0 0 16 16"
@@ -51,7 +51,7 @@ export const AddIcon = ({ className, width = '2rem', height = '2rem' }) => (
 
 export const SearchIcon = ({ className, width = '2.4rem', height = '2.4rem' }) => (
     <svg
-        class={className}
+        className={className}
         width={width}
         height={height}
         viewBox="0 0 48 48"
