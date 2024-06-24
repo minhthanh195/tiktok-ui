@@ -19,9 +19,10 @@ import { Link } from 'react-router-dom';
 import config from '~/config';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
-import Menu from '~/components/Poper/Menu';
+import Menu from '~/components/Popper/Menu';
 import { AddIcon, MailIcon, MessengerIcon } from '~/components/Icons';
 import Search from '../Search';
+import MenuItem from '~/components/Popper/Menu/MenuItem';
 const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [
@@ -29,6 +30,7 @@ const MENU_ITEMS = [
         icon: <FontAwesomeIcon icon={faEarthAsia} />,
         title: 'English',
         children: {
+            title: 'Language',
             data: [
                 {
                     type: 'language',
@@ -88,9 +90,10 @@ function Header() {
 
     // handle logic
     const handleMenuChange = (menuItem) => {
+        console.log(menuItem);
         switch (menuItem.type) {
             case 'language':
-                // Handle change language
+                // handle change language
                 break;
             default:
         }
